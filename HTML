@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAPE</title>
+    <link rel="stylesheet" href="sty.css">
+
+</head>
+
+<body>
+    <center>
+        <div id="display" class="shape"></div>
+        <div id="countDisplay">Clicks: 0</div>
+        <button id="increaseBtn">Click</button>
+        <button id="resetBtn">Reset</button>
+        <button id="redBtn">Red</button>
+        <button id="blueBtn">Blue</button>
+        <button id="toggleBtn">Theme</button>
+    </center>
+    <script>
+        let count = 0;
+        let isDarkTheme = false;
+        const displayDiv = document.getElementById('display');
+        const countDisplay = document.getElementById('countDisplay');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const redBtn = document.getElementById('redBtn');
+        const blueBtn = document.getElementById('blueBtn');
+        const toggleBtn = document.getElementById('toggleBtn');
+
+        redBtn.addEventListener('click', function() {
+            displayDiv.style.backgroundColor = 'red';
+        });
+
+        blueBtn.addEventListener('click', function() {
+            displayDiv.style.backgroundColor = 'blue';
+        });
+
+        increaseBtn.addEventListener('click', function() {
+            count++;
+            countDisplay.innerHTML = 'Clicks: ' + count;
+            if (count % 5 === 0) {
+                displayDiv.classList.remove('square');
+                displayDiv.style.borderRadius = '50%';
+            } else if (count % 2 === 0) {
+                displayDiv.classList.add('square');
+                displayDiv.style.borderRadius = '0';
+            } else {
+                displayDiv.classList.remove('square');
+                displayDiv.style.borderRadius = '50%';
+            }
+        });
+
+        resetBtn.addEventListener('click', function() {
+            count = 0;
+            countDisplay.innerHTML = 'Clicks: ' + count;
+            displayDiv.classList.remove('square');
+            displayDiv.style.borderRadius = '50%';
+        });
+
+      
+    </script>
+</body>
+
+</html>
